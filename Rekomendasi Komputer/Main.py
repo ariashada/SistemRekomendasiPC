@@ -2,8 +2,9 @@ from Database import connect_database
 from AMDprocessor import cari_amd_produktivitas, cari_amd_game, cari_vga_amd, cari_vga_nvdia, cari_sisa_komponen
 from INTELprocessor import cari_intel_produktivitas, cari_intel_game, cari_vga_amd, cari_vga_nvdia, cari_sisa_komponen
 from APUprocessor import cari_apu_produktivitas, cari_apu_game
+import random
 
-# Connect to the database and get component lists
+# Terhubung ke database dan dapatkan daftar komponen
 (
     mydb,
     database,
@@ -20,21 +21,27 @@ from APUprocessor import cari_apu_produktivitas, cari_apu_game
     list_casing
 ) = connect_database()
 
-# Set the budget and calculate component budgets
+# Tentukan anggaran dan hitung anggaran komponen
 harga = int(input("Masukkan Nominal Harga: "))
 harga_baru = harga-1250000 #250 ram, 150 ssd, 500 psu, 350 casing
 processor = harga_baru*0.3
 motherboard = harga_baru*0.3
 vga = harga_baru*0.4
 
-# Determine the user's requirements (Produktivitas or Game)
+# Tentukan kebutuhan pengguna (Produktivitas atau Game)
 kebutuhan = input("\nInput Kebutuhan:\n1. Produktivitas\n2. Game\nSilahkan Pilih: ")
 
-# Determine the user's choice of processor (AMD, Intel, Tidak)
-jenis_processor = input("\nIngin Menggunakan Processor Apa?\n1. AMD\n2. Intel\n3. APU\n4. Random\nSilahkan Pilih: ")
+# Tentukan pilihan pengguna untuk processor (AMD, Intel, Tidak)
+jenis_processor = input("\nIngin Menggunakan Processor Apa?\n1. AMD\n2. Intel\n3. APU\nSilahkan Pilih: ")
 
-# Determine the user's choice of GPU (AMD, Nvidia, Tidak)
-jenis_gpu = input("\nMau Menggunakan GPU Apa ?\n1. AMD\n2. Nvidia\n3. Random\nSilahkan Pilih: ")
+# Inisialisasi jenis_gpu sebelum pernyataan if
+jenis_gpu = ""
+
+if jenis_processor == "3" or jenis_processor.lower() == "apu":
+    print("Anda memilih APU, GPU tidak perlu dipilih.")
+else:
+# Tentukan pilihan pengguna untuk GPU (AMD, Nvidia, Random)
+    jenis_gpu = input("\nMau Menggunakan GPU Apa ?\n1. AMD\n2. Nvidia\nSilahkan Pilih: ")
 
 #============================================================Produktivitas=============================================
 if kebutuhan == "1" or kebutuhan == "produktivitas":

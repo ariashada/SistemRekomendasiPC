@@ -50,14 +50,13 @@ def cari_apu_produktivitas(
                         if max_harga_motherboard_intel == motherboard_intel[5]:
                             print(f"Motherboard \t : {motherboard_intel[1]} - {motherboard_intel[5]}")
                             found_motherboard = True
+                            print(f"Score Processor : {score_proci}")
                 
                 if not found_motherboard:
                     print("Maaf, data motherboard tidak ditemukan.")
 
     if not found_processor:
         print("Maaf, data processor tidak ditemukan.")
-        
-    print(f"Score Processor : {score_proci}")
 
 # ==========================================================Game===============================================================
 def cari_apu_game(
@@ -111,13 +110,12 @@ def cari_apu_game(
                         if max_harga_motherboard_intel == motherboard_intel[5]:
                             print(f"Motherboard \t : {motherboard_intel[1]} - {motherboard_intel[5]}")
                             found_motherboard = True
+                            print(f"Score Processor : {score_proci}")
                 
                 if not found_motherboard:
                     print("Maaf, data motherboard tidak ditemukan.")
 
     if not found_processor:
         print("Maaf, data processor tidak ditemukan.")
-        
-    print(f"Score Processor : {score_proci}")
     
     
